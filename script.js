@@ -1,5 +1,4 @@
-let playerSelection = prompt('Pick: rock, paper, or scissors').toLowerCase();
-let computerSelection = computerPlay();
+
 let playerScore = 0;
 let computerScore = 0; 
 
@@ -34,7 +33,7 @@ function playRound(playerSelection, computerSelection){
     } else if(playerSelection == 'paper' && computerSelection == 'scissors'){
         computerScore++
         return `You lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}!`
-    } else if(playerSelection == 'paper' && computerSelection == 'roc'){
+    } else if(playerSelection == 'paper' && computerSelection == 'rock'){
         playerScore++;
         return `You win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}!`
     }
@@ -50,9 +49,21 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
+function game(){
+    for (let i = 0; i < 5; i++){
+        let playerSelection = prompt('Pick: rock, paper, or scissors').toLowerCase();
+        let computerSelection = computerPlay();
+        console.log(playRound(playerSelection, computerSelection));
+        console.log(`Players score: ${playerScore}`);
+        console.log(`Computers score: ${computerScore}`);
+        
+    }
+    if (playerScore < computerScore){
+        console.log('You lost this best to five')
+    } else if (playerScore > computerScore){
+        console.log('You won this best to five')
+    }
+}
 
-
-
-console.log(playerScore);
-console.log(computerScore);
+game();
 
